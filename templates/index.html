@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <head>
+    <title>Rain Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <meta name="keywords" content="Rain Detection Final Project" />
+    <link
+      rel="stylesheet"
+      href="../static/styles/index.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Bellefair&amp;subset=hebrew,latin-ext"
+      rel="stylesheet"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <style></style>
+  </head>
+  <body>
+    <h1>Rain Detection</h1>
+    <div class="main-content-agile">
+      <div class="sub-main-w3">
+        <form action="/" method="POST">
+          <div class="head-line">
+            <h2>Predict Tomorrow Raining Now</h2>
+          </div>
+          <div class="form-style-agile">
+            <label>Date</label>
+            <div class="pom-agile">
+              <input
+                class="dropdown"
+                placeholder="Date"
+                name="date"
+                type="date"
+                required=""
+              />
+            </div>
+          </div>
+
+          <div class="form-style-agile">
+            <label
+              >Location (If you are not aussie, you can refer to this
+              <a href="../static/page/aussiemap.html" target="_blank">map</a
+              >)</label
+            >
+            <div class="pom-agile">
+              <select class="dropdown" name="loc" aria-label="Location">
+                <option selected>Select Option (Based on Aussie)</option>
+                <option value="32">Adelaide</option>
+                <option value="36">Albany</option>
+                <option value="0">Albury</option>
+                <option value="45">Alice Springs</option>
+                <option value="1">Badgerys Creek</option>
+                <option value="18">Ballarat</option>
+                <option value="19">Bendigo</option>
+                <option value="28">Brisbane</option>
+                <option value="15">Canberra</option>
+                <option value="29">Cairns</option>
+                <option value="2">Cobar</option>
+                <option value="3">Coffs Harbour</option>
+                <option value="27">Dartmoor</option>
+                <option value="46">Darwin</option>
+                <option value="30">Gold Coast</option>
+                <option value="43">Hobart</option>
+                <option value="47">Katherine</option>
+                <option value="44">Launceston</option>
+                <option value="22">Melbourne</option>
+                <option value="21">Melbourne Airport</option>
+                <option value="23">Mildura</option>
+                <option value="4">Moree</option>
+                <option value="33">Mount Gambier</option>
+                <option value="17">Mount Ginini</option>
+                <option value="5">Newcastle</option>
+                <option value="24">Nhil</option>
+                <option value="6">Norah Head</option>
+                <option value="7">Norfolk Island</option>
+                <option value="34">Nuriootpa</option>
+                <option value="25">Portland</option>
+                <option value="38">Pearce RAAF</option>
+                <option value="8">Penrith</option>
+                <option value="40">Perth</option>
+                <option value="39">Perth Airport</option>
+                <option value="9">Richmond</option>
+                <option value="20">Sale</option>
+                <option value="41">Salmon Gums</option>
+                <option value="10">Sydney</option>
+                <option value="11">Sydney Airport</option>
+                <option value="31">Townsville</option>
+                <option value="16">Tuggeranong</option>
+                <option value="48">Uluru</option>
+                <option value="42">Walpole</option>
+                <option value="12">Wagga Wagga</option>
+                <option value="26">Watsonia</option>
+                <option value="13">Williamtown</option>
+                <option value="37">Witchcliffe</option>
+                <option value="14">Wollongong</option>
+                <option value="35">Woomera</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Wind Gust Direction</label>
+            <div class="pom-agile">
+              <select class="dropdown" name="windgustdir" aria-label="Location">
+                <option selected>Select Option</option>
+                <option value="5">N (0°/360°)</option>
+                <option value="6">NNE (22.5°)</option>
+                <option value="3">NE (45°)</option>
+                <option value="8">ENE (67.5°)</option>
+                <option value="14">E (90°)</option>
+                <option value="13">ESE (112.5°)</option>
+                <option value="12">SE (135°)</option>
+                <option value="9">SSE (157.5°)</option>
+                <option value="10">S (180°)</option>
+                <option value="15">SSW (202.5°)</option>
+                <option value="7">SW (225°)</option>
+                <option value="2">WSW (247.5°)</option>
+                <option value="0">W (270°)</option>
+                <option value="1">WNW (292.5°)</option>
+                <option value="11">NW (315°)</option>
+                <option value="4">NNW (337.5°)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-style-agile">
+            <label>Wind Direction at The Morning</label>
+            <div class="pom-agile">
+              <select class="dropdown" name="winddir9am" aria-label="Location">
+                <option selected>Select Option</option>
+                <option value="8">N (0°/360°)</option>
+                <option value="15">NNE (22.5°)</option>
+                <option value="7">NE (45°)</option>
+                <option value="3">ENE (67.5°)</option>
+                <option value="12">E (90°)</option>
+                <option value="11">ESE (112.5°)</option>
+                <option value="2">SE (135°)</option>
+                <option value="5">SSE (157.5°)</option>
+                <option value="6">S (180°)</option>
+                <option value="9">SSW (202.5°)</option>
+                <option value="4">SW (225°)</option>
+                <option value="10">WSW (247.5°)</option>
+                <option value="0">W (270°)</option>
+                <option value="14">WNW (292.5°)</option>
+                <option value="13">NW (315°)</option>
+                <option value="1">NNW (337.5°)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-style-agile">
+            <label>Wind Direction at The Afternoon</label>
+            <div class="pom-agile">
+              <select
+                class="dropdown"
+                id="location"
+                name="winddir3pm"
+                aria-label="Location"
+              >
+                <option selected>Select Option</option>
+                <option value="12">N (0°/360°)</option>
+                <option value="14">NNE (22.5°)</option>
+                <option value="15">NE (45°)</option>
+                <option value="7">ENE (67.5°)</option>
+                <option value="2">E (90°)</option>
+                <option value="6">ESE (112.5°)</option>
+                <option value="11">SE (135°)</option>
+                <option value="5">SSE (157.5°)</option>
+                <option value="13">S (180°)</option>
+                <option value="9">SSW (202.5°)</option>
+                <option value="10">SW (225°)</option>
+                <option value="1">WSW (247.5°)</option>
+                <option value="4">W (270°)</option>
+                <option value="0">WNW (292.5°)</option>
+                <option value="3">NW (315°)</option>
+                <option value="8">NNW (337.5°)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-style-agile">
+            <label>Minimum Temperature</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 13.4"
+                name="mintemp"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Maximum Temperature</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 22.9"
+                name="maxtemp"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Rainfall</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 0.6"
+                name="rainfall"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Evaporation</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 4.6"
+                name="evaporation"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Sunshine</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 3.4"
+                name="sunshine"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Wind Gust Speed</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 44"
+                name="windgustspeed"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Wind Speed in The Morning</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 20"
+                name="windspeed9am"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Wind Speed in The Afternoon</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 24"
+                name="windspeed3pm"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Humidity in The Morning</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 71"
+                name="humidity9am"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Humidity in The Afternoon</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 22"
+                name="humidity3pm"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Pressure in The Morning</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 1007.7"
+                name="pressure9am"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Pressure in The Afternoon</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 1007.1"
+                name="pressure3pm"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Temperature in The Morning</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 16.9"
+                name="temp9am"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Temperature in The Afternoon</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 21.8"
+                name="team3pm"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Cloud in The Morning</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 8"
+                name="cloud9am"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>Cloud in The Afternoon</label>
+            <div class="pom-agile">
+              <input
+                placeholder="e.g.: 7"
+                name="cloud3pm"
+                type="text"
+                required=""
+              />
+            </div>
+          </div>
+          <div class="form-style-agile">
+            <label>How's the raining today?</label>
+            <div class="pom-agile">
+              <select
+                class="dropdown"
+                id="raintoday"
+                name="raintoday"
+                aria-label="Rain Today"
+              >
+                <option selected>Select Option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <input type="submit" value="Predict Now!" />
+        </form>
+      </div>
+    </div>
+
+    <div align="center" class="text-footer-corona">
+      <h2>Kelompok 4 • ITS02 • Final Project MCAI</h2>
+    </div>
+  </body>
+</html>
